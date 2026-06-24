@@ -1,13 +1,8 @@
 {
-  "name": "com.zeroWq.unityplugin.imguiutils",
+  "name": "com.zerowq.unityplugin.imguiutils",
   "displayName": "IMGUI Utils",
-  "unity": "2022.6",
+  "unity": "2022.3",
   "version": "1.0.0",
   "description": "Utils for IMGUI",
-  "keywords": [
-    "test",
-    "coverage",
-    "testing",
-    "opencover"
-  ]
+  "keywords": []
 }
