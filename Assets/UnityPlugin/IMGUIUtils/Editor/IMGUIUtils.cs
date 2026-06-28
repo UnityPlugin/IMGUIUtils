@@ -4,9 +4,9 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace IMGUI
+namespace UnityPlugin
 {
-    public class Utils
+    public class IMGUtils
     {
         static Dictionary<string, GUIContent> _guiContentCache = new();
         static Dictionary<string, bool> _foldOutCache = new();
