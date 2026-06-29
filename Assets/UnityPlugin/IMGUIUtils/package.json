@@ -3,7 +3,7 @@
   "displayName": "IMGUI Utils",
   "unity": "2022.3",
   "version": "1.0.0",
-  "description": "Utils for IMGUI, git@github.com:UnityPlugin/IMGUIUtils.git?path=/Assets/UnityPlugin/IMGUIUtils",
+  "description": "Utils for IMGUI",
   "author": {
     "name": "zeroWq"
   }
