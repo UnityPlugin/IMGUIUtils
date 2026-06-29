@@ -27,6 +27,8 @@ namespace UnityPlugin
             return EditorGUILayout.ObjectField(GetGUIContent(name), obj, typeof(T), false) as T;
         }
 
+        #region Event
+
         static FieldInfo _lastControlIdField;
 
         public static int GetLastControlID()
@@ -39,6 +41,24 @@ namespace UnityPlugin
 
             return (int)_lastControlIdField.GetValue(null);
         }
+
+
+        public static bool IsLastControlClick()
+        {
+            if (Event.current.type == EventType.MouseDown && Event.current.button == 0)
+            {
+                var rect = GUILayoutUtility.GetLastRect();
+                if (rect.Contains(Event.current.mousePosition))
+                {
+                    Event.current.Use();
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        #endregion
 
         #region Scope
 
@@ -170,10 +190,10 @@ namespace UnityPlugin
 
         #region Horizontal
 
-        public static HorizontalScope Horizontal(bool clearIndent = false, params GUILayoutOption[] options)
+        public static HorizontalScope Horizontal(bool boxStyle = false, bool clearIndent = false, params GUILayoutOption[] options)
         {
             var scope = new HorizontalScope();
-            scope.Begin(clearIndent, options);
+            scope.Begin(clearIndent, boxStyle, options);
             return scope;
         }
 
@@ -181,9 +201,16 @@ namespace UnityPlugin
         {
             public int indent;
 
-            public void Begin(bool clearIndent = false, params GUILayoutOption[] options)
+            public void Begin(bool boxStyle = false, bool clearIndent = false, params GUILayoutOption[] options)
             {
-                EditorGUILayout.BeginHorizontal(options);
+                if (boxStyle)
+                {
+                    EditorGUILayout.BeginHorizontal(EditorStyles.helpBox, options);
+                }
+                else
+                {
+                    EditorGUILayout.BeginHorizontal(options);
+                }
 
                 indent = EditorGUI.indentLevel;
                 if (clearIndent) EditorGUI.indentLevel = 0;
@@ -237,10 +264,10 @@ namespace UnityPlugin
 
         #region Vertical
 
-        public static VerticalScope Vertical(bool clearIndent = false, params GUILayoutOption[] options)
+        public static VerticalScope Vertical(bool boxStyle = false, bool clearIndent = false, params GUILayoutOption[] options)
         {
             var scope = new VerticalScope();
-            scope.Begin(clearIndent, options);
+            scope.Begin(boxStyle, clearIndent, options);
             return scope;
         }
 
@@ -248,9 +275,16 @@ namespace UnityPlugin
         {
             public int indent;
 
-            public void Begin(bool clearIndent = false, params GUILayoutOption[] options)
+            public void Begin(bool boxStyle = false, bool clearIndent = false, params GUILayoutOption[] options)
             {
-                EditorGUILayout.BeginVertical(options);
+                if (boxStyle)
+                {
+                    EditorGUILayout.BeginVertical(EditorStyles.helpBox, options);
+                }
+                else
+                {
+                    EditorGUILayout.BeginVertical(options);
+                }
 
                 indent = EditorGUI.indentLevel;
                 if (clearIndent) EditorGUI.indentLevel = 0;
