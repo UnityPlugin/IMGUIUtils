@@ -106,7 +106,7 @@ namespace UnityPlugin
             {
                 if (headerGroup)
                 {
-                    EditorGUILayout.EndFadeGroup();
+                    EditorGUILayout.EndFoldoutHeaderGroup();
                 }
 
                 EditorGUI.indentLevel--;
@@ -425,6 +425,49 @@ namespace UnityPlugin
         }
 
         #endregion
+
+        #endregion
+
+        #region SerializedProperty
+
+        public static void DrawPropertiesExcluding(SerializedObject serializedObject, params string[] propertyPaths)
+        {
+            if (serializedObject == null) return;
+
+            serializedObject.UpdateIfRequiredOrScript();
+            var iterator = serializedObject.GetIterator();
+            var enterChildren = true;
+
+            using (ChangeCheck())
+            {
+                while (iterator.NextVisible(enterChildren))
+                {
+                    enterChildren = false;
+
+                    if (propertyPaths != null && propertyPaths.Length > 0)
+                    {
+                        var exclude = false;
+                        for (int i = 0; i < propertyPaths.Length; i++)
+                        {
+                            if (iterator.propertyPath == propertyPaths[i])
+                            {
+                                exclude = true;
+                                break;
+                            }
+                        }
+
+                        if (exclude) continue;
+                    }
+
+                    using (new EditorGUI.DisabledScope("m_Script" == iterator.propertyPath))
+                    {
+                        EditorGUILayout.PropertyField(iterator, true);
+                    }
+                }
+            }
+
+            if (IsChange) serializedObject.ApplyModifiedProperties();
+        }
 
         #endregion
     }
