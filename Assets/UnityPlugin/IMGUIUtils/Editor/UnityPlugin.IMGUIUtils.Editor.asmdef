@@ -2,7 +2,9 @@
     "name": "UnityPlugin.IMGUIUtils.Editor",
     "rootNamespace": "UnityPlugin",
     "references": [],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

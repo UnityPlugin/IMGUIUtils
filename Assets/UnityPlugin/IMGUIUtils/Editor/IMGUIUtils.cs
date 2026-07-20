@@ -10,7 +10,7 @@ namespace UnityPlugin
 {
     public class IMGUIUtils
     {
-        static Dictionary<string, GUIContent> _guiContentCache = new();
+        static Dictionary<string, GUIContent> _guiContentCache = new Dictionary<string, GUIContent>();
 
         public static GUIContent GetGUIContent(string name)
         {
@@ -64,7 +64,7 @@ namespace UnityPlugin
 
         #region Foldout
 
-        static Dictionary<string, bool> _foldOutCache = new();
+        static Dictionary<string, bool> _foldOutCache = new Dictionary<string, bool>();
 
         public static FoldoutScope Foldout(string label, bool useHeaderGroup = false)
         {
@@ -301,7 +301,7 @@ namespace UnityPlugin
 
         #region Scroll
 
-        static Dictionary<string, Vector2> _scrollPos = new();
+        static Dictionary<string, Vector2> _scrollPos = new Dictionary<string, Vector2>();
 
         public static ScrollScope Scroll(string label, bool showLabel, params GUILayoutOption[] options)
         {
