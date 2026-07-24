@@ -1,5 +1,6 @@
 {
     "name": "UnityPlugin.EditorUtils.Editor",
+    "rootNamespace": "UnityPlugin.EditorUtils",
     "references": [],
     "includePlatforms": [
         "Editor"
