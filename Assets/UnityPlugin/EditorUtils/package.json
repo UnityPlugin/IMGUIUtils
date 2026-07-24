@@ -1,0 +1,10 @@
+{
+  "name": "com.zerowq.unityplugin.editorutils",
+  "displayName": "Editor Utils",
+  "unity": "2019.4",
+  "version": "1.0.0",
+  "description": "Editor Utils(IMGUI/Editor)\n",
+  "author": {
+    "name": "zeroWq"
+  }
+}

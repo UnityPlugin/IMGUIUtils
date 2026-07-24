@@ -9,6 +9,7 @@ Desktop.ini
 # VS Code
 .vscode
 .vs
+.vsconfig
 *.vsix
 *.sln
 *.slnx
@@ -17,7 +18,6 @@ Desktop.ini
 #Unity
 ProjectSettings/**
 UserSettings/**
-Packages/**
 Library/**
 Logs/**
 Temp/**

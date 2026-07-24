@@ -6,9 +6,9 @@ using UnityEngine;
 
 using Object = UnityEngine.Object;
 
-namespace UnityPlugin
+namespace UnityPlugin.EditorUtils
 {
-    public class IMGUIUtils
+    public class IMGUI
     {
         static Dictionary<string, GUIContent> _guiContentCache = new Dictionary<string, GUIContent>();
 

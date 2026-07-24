@@ -1,6 +1,5 @@
 {
-    "name": "UnityPlugin.IMGUIUtils.Editor",
-    "rootNamespace": "UnityPlugin",
+    "name": "UnityPlugin.EditorUtils.Editor",
     "references": [],
     "includePlatforms": [
         "Editor"
